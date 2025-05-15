@@ -117,24 +117,43 @@
     </div>
   </div>
 
-  <script>
-    const scrollContainer = document.getElementById('scrollContainer');
+ <script>
+  const scrollContainer = document.getElementById('scrollContainer');
 
-    // Hapus event mousemove scroll otomatis (tidak cocok di mobile)
-    // Gantikan dengan scroll manual sentuhan sudah didukung default
+  // Fungsi cek apakah perangkat desktop (bisa disederhanakan dengan matchMedia)
+  function isDesktop() {
+    return window.matchMedia('(pointer: fine)').matches;
+  }
 
-    // Cegah zoom pakai Ctrl + scroll
-    window.addEventListener('wheel', function (e) {
-      if (e.ctrlKey) {
-        e.preventDefault();
+  if (isDesktop()) {
+    document.addEventListener('mousemove', (e) => {
+      const screenWidth = window.innerWidth;
+      const mouseX = e.clientX;
+
+      const edgeThreshold = 200;
+      const scrollSpeed = 15; // scroll speed dikurangi agar lebih smooth
+
+      if (mouseX < edgeThreshold) {
+        scrollContainer.scrollLeft -= scrollSpeed;
+      } else if (mouseX > screenWidth - edgeThreshold) {
+        scrollContainer.scrollLeft += scrollSpeed;
       }
-    }, { passive: false });
-
-    // Cegah pinch zoom di mobile
-    ['gesturestart', 'gesturechange', 'gestureend'].forEach(eventType => {
-      document.addEventListener(eventType, e => e.preventDefault());
     });
-  </script>
+  }
+
+  // Cegah zoom pakai Ctrl + scroll
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Cegah pinch zoom di mobile
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(eventType => {
+    document.addEventListener(eventType, e => e.preventDefault());
+  });
+</script>
+
 
 </body>
 </html>
