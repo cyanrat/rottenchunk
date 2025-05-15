@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Layout A4 - TheCard.png</title>
+  <title>TheCard</title>
   <style>
     body {
       margin: 0;
@@ -14,31 +14,14 @@
       height: 100vh;
       user-select: none;
     }
-    
-.content {
-      text-align: center;
-      padding: 40px 20px;
-    }
+    .container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); }
   
-
-    @media print {
-      body {
-        background: white;
-      }
-
-      .a4-container {
-        box-shadow: none;
-        page-break-after: always;
-      }
-    }
-  </style>
-  <script>
-    // Blok klik kanan
-    document.addEventListener('contextmenu', event => event.preventDefault());
-  </script>
-</head>
-<body>
-  <div class="content">
+  <div class="container">
     <img src="TheCard.png" alt="TheCard A4">
   </div>
 </body>
