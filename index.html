@@ -14,26 +14,12 @@
       height: 100vh;
       user-select: none;
     }
-
-    .a4-container {
-      width: 794px;    /* 210mm */
-      height: 1123px;  /* 297mm */
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+    
+.content {
+      text-align: center;
+      padding: 40px 20px;
     }
-
-    .a4-container img {
-      width: 794px;
-      height: 1123px;
-      object-fit: cover;
-      user-drag: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
+  
 
     @media print {
       body {
@@ -52,7 +38,7 @@
   </script>
 </head>
 <body>
-  <div class="a4-container">
+  <div class="content">
     <img src="TheCard.png" alt="TheCard A4">
   </div>
 </body>
