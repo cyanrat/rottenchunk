@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TheCard</title>
+  <style>
+    @font-face {
+      font-family: 'DePixelBreit';
+      src: url('fonts/DePixelBreit.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #443353;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+    }
+
+    .text-box {
+      position: absolute;
+      bottom: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: #000;
+      font-family: 'DePixelBreit';
+      font-size: 19px;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      width: 75%;
+    }
+
+    .container {
+      position: relative;
+      width: 794px; /* A4 width in pixels */
+      height: 1123px; /* A4 height in pixels */
+      margin: auto;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: white;
+      overflow: hidden;
+      border-radius: 3%;
+    }
+
+    .container img.background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-drag: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .profile {
+      width: 512px;
+      height: 512px;
+      position: absolute;
+      top: 39.5%;
+      left: 48%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ref-link {
+      margin-top: 20px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .ref-link img {
+      width: 420px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .ref-link img:hover {
+      animation: bounce 0.8s ease-out;
+    }
+
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      30%  { transform: translateY(-10px); }
+      50%  { transform: translateY(0); }
+      70%  { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media print {
+      body {
+        background: rgb(50, 44, 100);
+      }
+
+      .container {
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="background" src="TheCard.png" alt="TheCard A4">
+    <div class="profile">
+      <img src="TheProfile.gif" alt="How">
+    </div>
+    <div class="text-box">
+      I am an emerging pixel artist specializing in environmental design and background creation. My portfolio encompasses various perspective styles, including top-down, isometric, and 2D platformer backgrounds. Although I am in the early stages of my artistic journey, I am deeply committed to developing my craft and consistently strive to deliver high-quality work.
+    </div>
+  </div>
+<script>// Cegah zoom pakai Ctrl + scroll
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Cegah pinch zoom di mobile
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(eventType => {
+    document.addEventListener(eventType, e => e.preventDefault());
+  });</script>
+  <!-- Tombol GIF ke oldcard.html -->
+  <a href="reels.html" class="ref-link" title="Lihat versi sebelumnya">
+    <img src="Open.gif" alt="Yok" />
+  </a>
+
+</body>
+</html>

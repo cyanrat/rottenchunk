@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scroll Kartu A4</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      font-family: sans-serif;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scroll-container {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 20px 400px;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      align-items: center;
+      height: 100%;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 794px;
+      height: 1123px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      position: relative; /* penting untuk positioning tombol */
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Tombol besar transparan di tengah kartu Fiverr */
+    .fiverr-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* transparan */
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+}
+.fiverr-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* efek hover */
+}
+
+.insta-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0); /* transparan */
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  outline: none;
+}
+.insta-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* efek hover */
+}
+    /* Hide scrollbar */
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="scroll-container" id="scrollContainer">
+      <div class="card" style="background-image: url('TheCard1.png');"></div>
+      <div class="card" style="background-image: url('TheCard2.png');"></div>
+      <div class="card" style="background-image: url('TheCard3.png');"></div>
+      <div class="card" style="background-image: url('TheCard4.png');"></div>
+      <div class="card" style="background-image: url('TheCard5.png');"></div>
+      <div class="card" style="background-image: url('tobecon.png');"></div>
+
+      <div class="card" style="background-image: url('FiverrCard.png');">
+        <button class="fiverr-button" 
+          onclick="window.open('https://www.fiverr.com/s/99oGPL0', '_blank', 'noopener')"
+          aria-label="Buka Fiverr">
+        </button>
+      </div>
+      <div class="card" style="background-image: url('InstaCard.png');">
+        <button class="insta-button" 
+          onclick="window.open('https://www.instagram.com/rottenchunk_/', '_blank', 'noopener')"
+          aria-label="Buka Instagram">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollContainer = document.getElementById('scrollContainer');
+
+    document.addEventListener('mousemove', (e) => {
+      const screenWidth = window.innerWidth;
+      const mouseX = e.clientX;
+
+      const edgeThreshold = 200;
+      const scrollSpeed = 1500;
+
+      if (mouseX < edgeThreshold) {
+        scrollContainer.scrollLeft -= scrollSpeed;
+      } else if (mouseX > screenWidth - edgeThreshold) {
+        scrollContainer.scrollLeft += scrollSpeed;
+      }
+    });
+
+    // Cegah zoom pakai Ctrl + scroll
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Cegah pinch zoom di mobile
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(eventType => {
+      document.addEventListener(eventType, e => e.preventDefault());
+    });
+  </script>
+
+</body>
+</html>
