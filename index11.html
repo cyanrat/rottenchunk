@@ -2,57 +2,34 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>The Card</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memuat...</title>
   <style>
-    @font-face {
-      font-family: 'DePixelBreit';
-      src: url('fonts/DePixelBreit.ttf') format('truetype');
-    }
-
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
-      background-color: #8d343d;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .Maintenance {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1;
-    }
-
-    .Maintenance img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none; >biar gabisa dizoom<
-    }
-
-    .TeksAtas {
-      position: absolute;
-      top: 50%;
-      color: "#FFFFFF";
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      color: #000;
-      font-family: 'DePixelBreit';
-      font-size: 82px;
-      background-color: transparent;
-      width: 75%;
-      text-align: center;
+    img {
+      width: 150px;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <div class="Maintenance">
-    <img src="Maintenance.gif" alt="Under Maintenance">
-  </div>
-  <div class="TeksAtas">Under Maintenance.....</div>
+  <img src="StudioClipFix.gif" alt="Loading...">
+
+  <script>
+    // Redirect ke halaman utama setelah 3 detik
+    setTimeout(function() {
+      window.location.href = "home.html"; // Ganti dengan file halaman utamamu
+    }, 3000);
+  </script>
 </body>
 </html>
